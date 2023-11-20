@@ -1,8 +1,11 @@
 import * as redis from 'redis'
 
+
 export const redisClient = redis.createClient({
   socket: {
     port: Number(process.env.REDIS_PORT),
+
+    // I couldn't figure how to set the same redis connection both pord and dev env. Help is needed.
     host: process.env.NODE_ENV === "production" ? process.env.REDIS_HOST_PROD : process.env.REDIS_HOST_DEV,
     tls: false
   }
@@ -12,10 +15,10 @@ export const redisClient = redis.createClient({
 })();
 
 redisClient.on('error', (err) => {
-  console.log(`Could not establish a connection with redis. ${err}`);
+  console.log(err);
 });
 redisClient.on('connect', () => {
-  console.log('Connected to redis successfully');
+  console.log('Connected');
 });
 redisClient.on('end', () => {
   console.log('Connection ended');
