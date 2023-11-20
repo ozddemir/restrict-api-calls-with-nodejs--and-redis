@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  redis:
+    image: 'redis'
+    container_name: redis
+    command: redis-server
+    ports:
+      - '6379:6379'
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+  restricted-api:
+    image: restricted-api
+    container_name: restricted-api
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    depends_on:
+      - redis
+  
+
