@@ -1,4 +1,4 @@
-# What this app do
+# What this app does
 - This app restricts the usage of the API to prevent users from abusing the system based on user token and usee IP with help of redis.
 - Rate limit is configurable from the environment (token limit and ip limit).
 - Very basic auth is applied to focus more on functionality of the app.
