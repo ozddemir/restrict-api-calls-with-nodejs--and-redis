@@ -10,5 +10,5 @@
 docker-compose -f docker-compose.yml up -d
 ```
 
-- You can find a postman collection at src/docs. Once you import the collection to the postman app. You can use 
+- You can find a postman collection at src/docs. Once you import the collection to the postman app, you can use 
  the app right away.
